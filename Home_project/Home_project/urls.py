@@ -15,14 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ACdb_app.views import AirConditionView
+from ACdb_app.views import AirConditionDBView
+from ACboard_app.views import AirConditionViews
 from rest_framework import routers
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'api/AirConditionBoard/', AirConditionViews),
 ]
 
 router = routers.DefaultRouter()
-router.register(r'api/AirCondition', AirConditionView)
+router.register(r'api/AirConditionDB', AirConditionDBView)
+#router.register(r'api/AirConditionBoard', AirConditionBoardView)
 urlpatterns += router.urls
